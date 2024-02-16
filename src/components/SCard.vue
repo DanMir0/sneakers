@@ -21,19 +21,17 @@ defineProps({
       class="absolute top-8 left-8"
       @click="onClickFavorite"
     />
-    <img :src="imageUrl" alt="Sneaker" />
+    <img :src="imageUrl" :alt="title" />
     <p class="mt-2">{{ title }}</p>
 
     <div class="flex justify-between mt-5">
       <div class="flex flex-col">
         <span class="text-slate-400">Цена:</span>
-        <b>{{ price }}</b>
+        <b>{{ price }} руб.</b>
       </div>
       <img @click="onClickAdd" :src="!isAdded ? '/plus.svg' : '/checked.svg'" alt="Plus" />
     </div>
   </div>
-
-  <p>{{ isFavorite }}</p>
 </template>
 
 <style scoped></style>
