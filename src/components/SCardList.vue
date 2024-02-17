@@ -2,14 +2,15 @@
 import SCard from './SCard.vue'
 
 defineProps({
-  items: Array
+  items: Array,
+  isFavorites: Boolean
 })
 
 const emit = defineEmits(['addToFavorite', 'addToCart'])
 </script>
 
 <template>
-  <div class="grid grid-cols-4 gap-5">
+  <div class="grid grid-cols-4 gap-5" v-auto-animate>
     <SCard
       v-for="item in items"
       :id="item.id"
@@ -18,8 +19,8 @@ const emit = defineEmits(['addToFavorite', 'addToCart'])
       :image-url="item.imageUrl"
       :price="item.price"
       :isFavorite="item.isFavorite"
-      :onClickFavorite="() => emit('addToFavorite', item)"
-      :onClickAdd="() => emit('addToCart', item)"
+      :onClickFavorite="isFavorites ? null : () => emit('addToFavorite', item)"
+      :onClickAdd="isFavorites ? null : () => emit('addToCart', item)"
       :isAdded="item.isAdded"
     />
   </div>
